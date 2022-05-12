@@ -81,7 +81,7 @@ for site_id in cluster['site']:
             
             version = msg.format(result).strip()
             
-            core_version = "v5.1.1"
+            core_version = "v5.1.2"
             
             if core_version == version:
                 msgx = "Hi there,\n\nDeployment of Core to " + version + " for " + site['name'] + " completed succesfully.\n\nThanks!\nEGPAF/LIN HIS."
