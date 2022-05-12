@@ -72,7 +72,7 @@ for site_id in cluster['site']:
 
             version = msg.format(result).strip()
 
-            art_version = "v4.15.6"
+            art_version = "v4.15.5"
 
             if art_version == version:
                 msgx = "Hi there,\n\nDeployment of ART to " + version + " for " + site[
@@ -98,7 +98,7 @@ for site_id in cluster['site']:
             # make sure we are sending the alert at the last pint attempt
             if count == 3:
                 for recipient in recipients:
-                    msg = "Hi there,\n\nDeployment of ART to v4.15.6 for " + site['name'] + " failed to complete after several connection attempts.\n\nThanks!\nEGPAF/LIN HIS."
+                    msg = "Hi there,\n\nDeployment of ART to v4.15.5 for " + site['name'] + " failed to complete after several connection attempts.\n\nThanks!\nEGPAF/LIN HIS."
                     params = {
                         "api_key": os.getenv('API_KEY'),
                         "recipient": recipient,
