@@ -111,7 +111,7 @@ echo "Your build number is: \\${REQUEST_ID} -> ${REQUEST_ID}"'''
             sh '''#python3 core_shippingx.py
 #python3 art_shippingx.py
 #python3 opd_shippingx.py
-python3 dde_shipping.py'''
+#python3 dde_shipping.py'''
           }
         }
 
