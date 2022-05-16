@@ -59,13 +59,13 @@ for site_id in cluster['site']:
             os.system(push_dde)
             
             # ship dde setup script to remote site
-            #push_dde_script = "rsync " + "-r $WORKSPACE/opd_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/html/BHT-Core/apps/OPD"
-            #os.system(push_dde_script)
+            push_dde_script = "rsync " + "-r $WORKSPACE/opd_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/DDE"
+            os.system(push_dde_script)
 
             # run setup script
-            #run_dde_script = "ssh " + site['username'] + "@" + site[
-            #    'ip_address'] + " 'cd /var/www/dde4 && ./dde_setup.sh'"
-            #os.system(run_dde_script)
+            run_dde_script = "ssh " + site['username'] + "@" + site[
+                'ip_address'] + " 'cd /var/www/DDE && ./dde_setup.sh'"
+            os.system(run_dde_script)
             result = Connection("" + site['username'] + "@" + site['ip_address'] + "").run(
                 'cd /var/www/DDE && git describe', hide=True)
             msg = "{0.stdout}"
