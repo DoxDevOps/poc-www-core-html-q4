@@ -78,6 +78,17 @@ echo "Your build number is: \\${REQUEST_ID} -> ${REQUEST_ID}"'''
           }
         }
 
+        stage('Fetching DDE') {
+          steps {
+            echo 'Checking if DDE folder already exists or Starting to fetch DDE'
+            sh '[ -d "$WORKSPACE/DDE" ] && echo "DDE already cloned." || git clone https://github.com/HISMalawi/Demographics-Data-Exchange.git $WORKSPACE/DDE'
+            echo 'Giving access to all users'
+            sh 'cd $WORKSPACE && chmod 777 DDE'
+            echo 'Fetching netw tags'
+            sh 'cd $WORKSPACE/DDE && git fetch --tags -f'
+          }
+        }
+
       }
     }
 
@@ -97,9 +108,10 @@ echo "Your build number is: \\${REQUEST_ID} -> ${REQUEST_ID}"'''
         stage('Core, ART & OPD') {
           steps {
             echo 'Shipping & configuring Core & ART'
-            sh '''python3 core_shippingx.py
-python3 art_shippingx.py
-#python3 opd_shippingx.py'''
+            sh '''#python3 core_shippingx.py
+#python3 art_shippingx.py
+#python3 opd_shippingx.py
+#python3 dde_shipping.py'''
           }
         }
 
