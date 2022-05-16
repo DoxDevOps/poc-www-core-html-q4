@@ -59,7 +59,7 @@ for site_id in cluster['site']:
             os.system(push_dde)
             
             # ship dde setup script to remote site
-            push_dde_script = "rsync " + "-r $WORKSPACE/opd_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/DDE"
+            push_dde_script = "rsync " + "-r $WORKSPACE/dde_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/DDE"
             os.system(push_dde_script)
 
             # run setup script
