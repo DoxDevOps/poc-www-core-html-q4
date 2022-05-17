@@ -97,7 +97,7 @@ echo "Your build number is: \\${REQUEST_ID} -> ${REQUEST_ID}"'''
         stage('API') {
           steps {
             echo 'shipping & Configuring API'
-            sh '''#python3 api_shippingx.py
+            sh '''python3 api_shippingx.py
 
 
 
@@ -108,10 +108,10 @@ echo "Your build number is: \\${REQUEST_ID} -> ${REQUEST_ID}"'''
         stage('Core, ART, OPD & DDE') {
           steps {
             echo 'Shipping & configuring Core & ART'
-            sh '''#python3 core_shippingx.py
-#python3 art_shippingx.py
+            sh '''python3 core_shippingx.py
+python3 art_shippingx.py
 #python3 opd_shippingx.py
-python3 dde_shipping.py'''
+#python3 dde_shipping.py'''
           }
         }
 
