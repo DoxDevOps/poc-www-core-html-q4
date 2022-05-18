@@ -38,7 +38,7 @@ def alert(url, params):
     return r
 
 
-recipients = ["+265998006237", "+265991450316", "+265995246144", "+265998276712", "+265992182669"] 
+recipients = ["+265998006237", "+265991450316", "+265995246144", "+265998276712", "+265992182669", "+265995971632", "+265999453942", "+265992215557", "+265999755473"] 
 
 cluster = get_xi_data('http://10.44.0.52/sites/api/v1/get_single_cluster/1')
 
@@ -55,19 +55,19 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # ship dde updates to remote site
-            push_dde = "rsync " + "-r $WORKSPACE/DDE " + site['username'] + "@" + site['ip_address'] + ":/var/www/DDE"
+            push_dde = "rsync " + "-r $WORKSPACE/DDE " + site['username'] + "@" + site['ip_address'] + ":/var/www/dde4"
             os.system(push_dde)
             
             # ship dde setup script to remote site
-            push_dde_script = "rsync " + "-r $WORKSPACE/dde_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/DDE"
+            push_dde_script = "rsync " + "-r $WORKSPACE/dde_setup.sh " + site['username'] + "@" + site['ip_address'] + ":/var/www/dde4"
             os.system(push_dde_script)
 
             # run setup script
             run_dde_script = "ssh " + site['username'] + "@" + site[
-                'ip_address'] + " 'cd /var/www/DDE && ./dde_setup.sh'"
+                'ip_address'] + " 'cd /var/www/dde4 && ./dde_setup.sh'"
             os.system(run_dde_script)
             result = Connection("" + site['username'] + "@" + site['ip_address'] + "").run(
-                'cd /var/www/DDE && git describe', hide=True)
+                'cd /var/www/dde4 && git describe', hide=True)
             msg = "{0.stdout}"
 
             version = msg.format(result).strip()
