@@ -55,7 +55,7 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # ship dde updates to remote site
-            push_dde = "rsync " + "-r $WORKSPACE/DDE " + site['username'] + "@" + site['ip_address'] + ":/var/www/dde4"
+            push_dde = "rsync " + "-r $WORKSPACE/dde4 " + site['username'] + "@" + site['ip_address'] + ":/var/www/dde4"
             os.system(push_dde)
             
             # ship dde setup script to remote site
